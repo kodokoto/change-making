@@ -4,7 +4,7 @@ change = 16
 coinSet = (1, 5, 12, 20)
 memory = {} # here the results of cn(x) will be stored in the format ['16': 4]
 
-def efficient(x):
+def efficient(x :int) -> int: # worst case scenario should be O(n)
     if x == 0:
         return 0
     elif x in memory: # if x in is memory then we have already calculated it
@@ -16,8 +16,8 @@ def efficient(x):
         return memory[x]
 
 # this is my one liner version of this function which doesnt use the dictionary to store previous values
-
-cn = lambda x: (x-1)**10 if x<0 else 0 if x==0 else 1 + min([cn(x-i) for i in {1, 5, 12, 20}])
+# roughly O(1.346^n)
+cn = lambda x: 0 if x==0 else 1 + min([cn(x-i) for i in (1, 5, 12, 20) if x-i>=0])
 
 # its a low slower, cost of efficiency for aesthetics
 
